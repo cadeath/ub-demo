@@ -1,5 +1,5 @@
 #!/bin/sh
-# nano docker.sh && chmod +x docker.sh && sh docker.sh
+# nano install.sh && chmod +x install.sh && sh install.sh
 
 START=$(date +%s)
 
@@ -10,9 +10,17 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
 apt update
 
-apt install -y docker-ce git
+apt install -y docker-ce git vsftpd
 
+git clone https://github.com/cadeath/ub-demo.git && cd ub-demo
+docker compose build
+
+cp config/vsftpd.conf /etc/vsftpd.conf
+service vsftpd restart
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds"
+
+# adduser <user>
+# usermod -aG docker $USER 
