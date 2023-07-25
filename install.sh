@@ -15,6 +15,7 @@ apt install -y docker-ce git vsftpd
 git clone https://github.com/cadeath/ub-demo.git && cd ub-demo
 docker compose build
 
+rm /etc/vsftpd.conf
 cp config/vsftpd.conf /etc/vsftpd.conf
 service vsftpd restart
 
