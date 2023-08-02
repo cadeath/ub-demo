@@ -1,0 +1,1 @@
+docker run --name scr-ub -ti -v ${pwd}:/usr/src/ sonarsource/sonar-scanner-cli -D sonar.projectKey=ub-demo -D sonar.sources=. -D sonar.host.url=http://192.168.2.79:9000 -D sonar.token=sqp_e18ab7224f435c1fdc6cd60fc39a6397866c24ff

